@@ -86,25 +86,27 @@ a:hover{ text-decoration: underline; }
   display:flex;
   gap:10px;
   align-items:center;
-  min-width: 200px;
+  flex-shrink: 0;
 }
 .logo{
-  width:36px; height:36px;
-  border-radius: 12px;
+  width:32px; height:32px;
+  border-radius: 8px;
   background: var(--accent1);
-  border: 1px solid var(--border);
+  flex-shrink: 0;
 }
 .brand-title{
   display:flex;
   flex-direction:column;
-  line-height:1.1;
+  line-height:1.2;
+  white-space: nowrap;
 }
 .brand-title strong{
-  font-size: 14px;
-  letter-spacing: .2px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .1px;
 }
 .brand-title span{
-  font-size:12px;
+  font-size:11px;
   color: var(--muted2);
 }
 
@@ -175,17 +177,17 @@ nav a:hover{
 
 /* Hero */
 .hero{
-  padding: 64px 0 36px;
+  padding: 52px 0 44px;
+  border-bottom: 1px solid var(--border);
 }
 .hero-grid{
   display:grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 26px;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
   align-items: start;
 }
 @media (max-width: 900px){
   .hero-grid{ grid-template-columns: 1fr; }
-  .brand, .actions{ min-width:auto; }
 }
 
 .kicker{
@@ -209,16 +211,18 @@ nav a:hover{
 }
 
 h1{
-  font-size: clamp(30px, 4vw, 52px);
-  line-height:1.05;
-  letter-spacing: -0.04em;
-  margin: 14px 0 14px;
+  font-size: clamp(28px, 3.5vw, 48px);
+  line-height:1.08;
+  letter-spacing: -0.03em;
+  margin: 12px 0 16px;
+  font-weight: 800;
 }
 .lead{
-  font-size: 16px;
+  font-size: 15.5px;
   color: var(--muted);
-  max-width: 60ch;
-  margin: 0 0 18px;
+  max-width: 58ch;
+  margin: 0 0 16px;
+  line-height: 1.65;
 }
 
 .hero-cta{
@@ -280,28 +284,39 @@ h1{
 
 /* Sections */
 section{
-  padding: 40px 0;
+  padding: 52px 0;
+}
+section:nth-child(even){
+  background: color-mix(in oklab, var(--accent1) 4%, var(--bg));
 }
 .section-head{
   display:flex;
-  align-items: end;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 .section-head h2{
-  margin:0;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--accent1);
-  display: inline-block;
+  margin:0 0 6px;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+.section-label{
+  display:inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent1);
+  margin-bottom: 6px;
 }
 .section-head p{
   margin:0;
   color: var(--muted2);
   font-size: 13px;
   max-width: 62ch;
+  line-height: 1.6;
 }
 
 .grid{
@@ -318,31 +333,31 @@ section{
 
 .card{
   border: 1px solid var(--border);
-  border-top: 3px solid var(--accent1);
+  border-left: 3px solid var(--accent1);
   background: var(--card);
-  border-radius: 12px;
-  padding: 18px;
+  border-radius: 10px;
+  padding: 20px;
   box-shadow: var(--shadow);
-  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
-  min-height: 148px;
+  transition: transform .15s, border-left-color .15s, box-shadow .15s;
 }
 .card:hover{
-  transform: translateY(-3px);
-  border-color: var(--accent1);
-  box-shadow: 0 8px 24px rgba(29,78,216,.12);
+  transform: translateY(-2px);
+  border-left-color: var(--accent2);
+  box-shadow: 0 6px 20px rgba(29,78,216,.10);
 }
 .card h3{
   margin: 0 0 8px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: .01em;
+  text-transform: uppercase;
   color: var(--accent1);
 }
 .card p{
   margin:0;
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* Team */
@@ -360,33 +375,40 @@ section{
 
 .person{
   border: 1px solid var(--border);
-  background: color-mix(in oklab, var(--card) 92%, transparent);
-  border-radius: 18px;
-  padding: 16px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
   box-shadow: var(--shadow);
   display:flex;
-  gap: 12px;
-  align-items:flex-start;
+  flex-direction: column;
+  gap: 14px;
+}
+.person-top{
+  display:flex;
+  gap: 14px;
+  align-items: flex-start;
 }
 .avatar{
-  width:56px;
-  height:56px;
-  border-radius:14px;
-  border:1px solid var(--border);
+  width:64px;
+  height:64px;
+  border-radius:10px;
+  border:2px solid var(--border);
   object-fit:cover;
   flex:0 0 auto;
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
   aspect-ratio:1/1;
 }
 .person h3{
-  margin:0;
+  margin:0 0 2px;
   font-size: 15px;
+  font-weight: 700;
   letter-spacing:-0.01em;
 }
 .role{
-  margin-top: 2px;
-  font-size: 13px;
-  color: var(--muted2);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent1);
+  text-transform: uppercase;
+  letter-spacing: .04em;
 }
 .bio{
   margin-top: 10px;
@@ -688,34 +710,32 @@ footer{
 
         <div class="team-grid">
           <div class="person">
-            <img class="avatar" src="https://julian.eti.pg.gda.pl/images/js2.JPG" alt="Julian Szymański">
-            <div>
-              <h3>Julian Szymański</h3>
-              <div class="role">Professor · Group Lead</div>
-              <div class="bio">
-                Leads the lab at Gdańsk University of Technology. Focus on distributed systems and intelligent computing,
-                with emphasis on deployable research and solid engineering.
+            <div class="person-top">
+              <img class="avatar" src="https://julian.eti.pg.gda.pl/images/js2.JPG" alt="Julian Szymański">
+              <div>
+                <h3>Julian Szymański</h3>
+                <div class="role">Professor · Group Lead</div>
               </div>
-              <div class="links">
-                <a class="pill" href="mailto:julian.szymanski@eti.pg.gda.pl">✉ julian.szymanski@eti.pg.gda.pl</a>
-                <a class="pill" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Most Wiedzy</a>
-              </div>
+            </div>
+            <div class="bio">Leads the lab at Gdańsk University of Technology. Focus on distributed systems and intelligent computing, with emphasis on deployable research and solid engineering.</div>
+            <div class="links">
+              <a class="pill" href="mailto:julian.szymanski@eti.pg.gda.pl">✉ julian.szymanski@eti.pg.gda.pl</a>
+              <a class="pill" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Most Wiedzy</a>
             </div>
           </div>
 
           <div class="person">
-            <img class="avatar" src="https://cv.stan.bar/avatar.jpg" alt="Stanisław Barański">
-            <div>
-              <h3>Stanisław Barański</h3>
-              <div class="role">Researcher / Engineer</div>
-              <div class="bio">
-                Research at the intersection of blockchain protocols, privacy-preserving and verifiable data processing,
-                and trustworthy ML/NLP systems.
+            <div class="person-top">
+              <img class="avatar" src="https://cv.stan.bar/avatar.jpg" alt="Stanisław Barański">
+              <div>
+                <h3>Stanisław Barański</h3>
+                <div class="role">Researcher / Engineer</div>
               </div>
-              <div class="links">
-                <a class="pill" href="mailto:stanislaw.baranski@pg.edu.pl">✉ stanislaw.baranski@pg.edu.pl</a>
-                <a class="pill" href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Most Wiedzy</a>
-              </div>
+            </div>
+            <div class="bio">Research at the intersection of blockchain protocols, privacy-preserving and verifiable data processing, and trustworthy ML/NLP systems.</div>
+            <div class="links">
+              <a class="pill" href="mailto:stanislaw.baranski@pg.edu.pl">✉ stanislaw.baranski@pg.edu.pl</a>
+              <a class="pill" href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Most Wiedzy</a>
             </div>
           </div>
 
