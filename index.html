@@ -3,1037 +3,717 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Artificial Intelligence and Blockchain Lab — Gdańsk University of Technology</title>
-  <meta name="description" content="Artificial Intelligence and Blockchain Lab at Gdańsk University of Technology. Research in NLP, LLMs, trustworthy AI, blockchain protocols, and privacy-preserving computation." />
+  <title>Trustworthy AI Lab — Gdansk University of Technology</title>
+  <meta name="description" content="Trustworthy AI Lab at Gdansk University of Technology. Research in trustworthy AI systems, large language models, privacy-preserving computation, and decentralized infrastructure." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        oklch(98.5% 0.005 245);
+      --bg-alt:    oklch(96.5% 0.007 245);
+      --text:      oklch(18%  0.04  250);
+      --muted:     oklch(44%  0.025 250);
+      --faint:     oklch(62%  0.015 250);
+      --rule:      oklch(88%  0.010 245);
+      --accent:    oklch(36%  0.16  255);
+      --accent-lt: oklch(95%  0.03  255);
+      --serif:  'EB Garamond', Georgia, serif;
+      --sans:   'Source Sans 3', system-ui, sans-serif;
+      --max-w: 1040px;
+      --pad-x: clamp(20px, 5vw, 48px);
+      --sec-gap: 72px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  
-:root{
-  --bg: #060D1A;
-  --bg2:#0C1526;
-  --card:#101D30;
-  --text:#E2ECF8;
-  --muted:#8BA4BF;
-  --muted2:#56708A;
-  --border: #1C2E45;
-  --shadow: 0 2px 10px rgba(0,0,0,.5);
-  --accent1:#2563EB;
-  --accent2:#0D9488;
-  --accent3:#10B981;
-  --ring: rgba(37,99,235,.22);
-  --link:#60A5FA;
-  --chip: #132030;
-}
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
 
-[data-theme="light"]{
-  --bg: #F0F5FF;
-  --bg2:#FFFFFF;
-  --card:#FFFFFF;
-  --text:#0D1B2A;
-  --muted:#445566;
-  --muted2:#7890A8;
-  --border: #C8D8EC;
-  --shadow: 0 1px 4px rgba(13,27,42,.07), 0 6px 18px rgba(13,27,42,.05);
-  --accent1:#1D4ED8;
-  --accent2:#0D9488;
-  --accent3:#059669;
-  --ring: rgba(29,78,216,.12);
-  --link:#1D4ED8;
-  --chip: #E8F0FA;
-}
+    /* NAV */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: color-mix(in oklch, var(--bg) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .site-nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      gap: 24px;
+    }
+    .nav-brand {
+      font-family: var(--serif);
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-brand span { color: var(--muted); font-weight: 400; }
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      padding: 6px 13px;
+      display: block;
+      letter-spacing: 0.01em;
+      transition: color 0.1s;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+    @media (max-width: 720px) { .nav-links { display: none; } }
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.55;
-  overflow-x:hidden;
-}
+    /* HERO */
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-affil {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--faint);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(38px, 5.5vw, 62px);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 22px;
+      max-width: 16ch;
+    }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 58ch;
+      margin-bottom: 32px;
+    }
+    .hero-cta { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+    .cta-link {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      text-transform: uppercase;
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 1px;
+      transition: opacity 0.1s;
+    }
+    .cta-link:hover { opacity: 0.7; text-decoration: none; }
+    .cta-link.secondary { color: var(--muted); border-color: var(--rule); }
+    .cta-link.secondary:hover { color: var(--text); opacity: 1; }
 
-a{ color:var(--link); text-decoration:none; }
-a:hover{ text-decoration: underline; }
+    /* SECTIONS */
+    section { padding: var(--sec-gap) 0; border-bottom: 1px solid var(--rule); }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 3vw, 34px);
+      font-weight: 500;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+    .section-body {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 66ch;
+      line-height: 1.75;
+    }
 
-.container{
-  width:min(1120px, 92vw);
-  margin:0 auto;
-}
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 64px;
+      align-items: start;
+    }
+    @media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .about-text p { font-size: 16.5px; line-height: 1.75; color: var(--muted); }
+    .about-text p + p { margin-top: 14px; }
+    .about-meta-item {
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      gap: 12px;
+    }
+    .about-meta-item:last-child { border-bottom: 1px solid var(--rule); }
+    .about-meta-label { font-weight: 600; color: var(--text); min-width: 96px; flex-shrink: 0; }
 
-/* Top bar */
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter: blur(10px);
-  background: color-mix(in oklab, var(--bg2) 70%, transparent);
-  border-bottom: 1px solid var(--border);
-}
-.topbar-inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding: 14px 0;
-  gap: 14px;
-}
+    /* RESEARCH */
+    .research-areas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 40px;
+      border-top: 1px solid var(--rule);
+    }
+    @media (max-width: 640px) { .research-areas { grid-template-columns: 1fr; } }
+    .area-item {
+      padding: 28px 32px 28px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .research-areas .area-item:nth-child(even) {
+      padding-left: 32px;
+      padding-right: 0;
+      border-left: 1px solid var(--rule);
+    }
+    @media (max-width: 640px) {
+      .research-areas .area-item:nth-child(even) { padding-left: 0; border-left: none; }
+    }
+    .area-num { font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.06em; margin-bottom: 8px; }
+    .area-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+    .area-desc { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
 
-.brand{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  min-width: 200px;
-}
-.logo{
-  width:36px; height:36px;
-  border-radius: 12px;
-  background: var(--accent1);
-  border: 1px solid var(--border);
-}
-.brand-title{
-  display:flex;
-  flex-direction:column;
-  line-height:1.1;
-}
-.brand-title strong{
-  font-size: 14px;
-  letter-spacing: .2px;
-}
-.brand-title span{
-  font-size:12px;
-  color: var(--muted2);
-}
+    /* PUBLICATIONS */
+    .pub-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .pub-view-all { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; white-space: nowrap; }
+    .pub-list { list-style: none; }
+    .pub-entry {
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px 32px;
+      align-items: start;
+    }
+    .pub-entry:last-child { border-bottom: 1px solid var(--rule); }
+    .pub-title-link {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.35;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .pub-title-link:hover { color: var(--accent); text-decoration: none; }
+    .pub-meta { font-size: 13.5px; color: var(--muted); margin-bottom: 8px; }
+    .pub-venue { font-style: italic; }
+    .pub-sep { margin: 0 5px; color: var(--faint); }
+    .pub-links-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .pub-link {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color 0.1s, border-color 0.1s;
+    }
+    .pub-link:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+    .pub-year-text { font-size: 13px; font-weight: 600; color: var(--faint); }
+    @media (max-width: 600px) { .pub-entry { grid-template-columns: 1fr; } .pub-year-col { display: none; } }
+    .pub-note { margin-top: 20px; font-size: 13px; color: var(--faint); }
 
-nav{
-  display:flex;
-  gap: 4px;
-  align-items:center;
-  flex-wrap:nowrap;
-  justify-content:center;
-}
-nav a{
-  font-weight:600;
-  font-size: 13px;
-  color: var(--muted);
-  white-space:nowrap;
-  padding: 7px 10px;
-  border-radius: 8px;
-  transition: color .12s, background .12s;
-}
-nav a:hover{
-  text-decoration:none;
-  color: var(--text);
-  background: var(--chip);
-}
+    /* PEOPLE */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 28px;
+      margin-top: 40px;
+    }
+    @media (max-width: 840px) { .people-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .people-grid { grid-template-columns: 1fr 1fr; gap: 24px 16px; } }
+    .person-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 3px;
+      margin-bottom: 14px;
+      background: var(--bg-alt);
+    }
+    .person-name { font-family: var(--serif); font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 2px; line-height: 1.2; }
+    .person-role { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+    .person-links { display: flex; flex-direction: column; gap: 4px; }
+    .person-links a { font-size: 12.5px; color: var(--faint); display: block; transition: color 0.1s; }
+    .person-links a:hover { color: var(--accent); text-decoration: none; }
 
-.actions{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  justify-content:flex-end;
-  min-width: 200px;
-}
+    /* COLLABORATE */
+    .collab-modes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      margin-top: 36px;
+      border-top: 1px solid var(--rule);
+    }
+    @media (max-width: 700px) { .collab-modes { grid-template-columns: 1fr; } }
+    .collab-mode { padding: 28px 28px 28px 0; }
+    .collab-modes .collab-mode:not(:first-child) { padding-left: 28px; border-left: 1px solid var(--rule); }
+    @media (max-width: 700px) {
+      .collab-modes .collab-mode:not(:first-child) { padding-left: 0; border-left: none; border-top: 1px solid var(--rule); }
+    }
+    .collab-mode-title { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--text); margin-bottom: 10px; }
+    .collab-mode-desc { font-size: 14.5px; color: var(--muted); line-height: 1.65; }
+    .collab-note {
+      margin-top: 36px;
+      padding: 20px 24px;
+      background: var(--accent-lt);
+      border-left: 3px solid var(--accent);
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 72ch;
+    }
+    .collab-note strong { color: var(--text); }
 
-.btn{
-  border: 1px solid var(--border);
-  background: color-mix(in oklab, var(--card) 90%, transparent);
-  color: var(--text);
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-weight: 700;
-  font-size: 13px;
-  cursor:pointer;
-  box-shadow: none;
-  display:inline-flex;
-  gap:10px;
-  align-items:center;
-  transition: transform .12s ease, background .12s ease, border-color .12s ease;
-}
-.btn:hover{
-  transform: translateY(-1px);
-  background: color-mix(in oklab, var(--card) 96%, transparent);
-  border-color: color-mix(in oklab, var(--border) 60%, var(--accent2));
-}
-.btn.primary{
-  border: 1px solid var(--accent1);
-  background: var(--accent1);
-  color: #fff;
-}
-.btn.primary:hover{
-  transform: translateY(-1px);
-  border-color: color-mix(in oklab, var(--accent2) 60%, var(--border));
-}
+    /* CONTACT */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px 64px;
+      margin-top: 36px;
+      align-items: start;
+    }
+    @media (max-width: 760px) { .contact-layout { grid-template-columns: 1fr; gap: 36px; } }
+    .contact-block + .contact-block { margin-top: 28px; }
+    .contact-label { font-size: 11px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--faint); margin-bottom: 14px; }
+    .contact-address { font-size: 14.5px; color: var(--muted); line-height: 1.75; }
+    .people-contact-list { list-style: none; }
+    .people-contact-list li {
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: minmax(160px, 1fr) 1.4fr auto;
+      gap: 8px 24px;
+      align-items: baseline;
+    }
+    .people-contact-list li:last-child { border-bottom: 1px solid var(--rule); }
+    .pc-name { font-weight: 600; color: var(--text); font-size: 14px; }
+    .pc-email { color: var(--muted); font-size: 13.5px; }
+    .pc-profile { font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: 0.02em; white-space: nowrap; }
+    .pc-profile:hover { color: var(--accent); }
+    .pc-email-empty { color: var(--faint); font-size: 13px; font-style: italic; }
+    @media (max-width: 600px) {
+      .people-contact-list li { grid-template-columns: 1fr; gap: 4px; }
+    }
 
-.icon{
-  width:16px; height:16px;
-  display:inline-block;
-}
-
-/* Hero */
-.hero{
-  padding: 64px 0 36px;
-}
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.35fr 0.65fr;
-  gap: 26px;
-  align-items: start;
-}
-@media (max-width: 900px){
-  .hero-grid{ grid-template-columns: 1fr; }
-  .brand, .actions{ min-width:auto; }
-}
-
-.kicker{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: color-mix(in oklab, var(--card) 85%, transparent);
-  box-shadow: var(--shadow);
-  font-size: 13px;
-  color: var(--muted);
-  width: fit-content;
-}
-.dot{
-  width:8px; height:8px;
-  border-radius:999px;
-  background: var(--accent1);
-  box-shadow: 0 0 0 6px var(--ring);
-}
-
-h1{
-  font-size: clamp(30px, 4vw, 52px);
-  line-height:1.05;
-  letter-spacing: -0.04em;
-  margin: 14px 0 14px;
-}
-.lead{
-  font-size: 16px;
-  color: var(--muted);
-  max-width: 60ch;
-  margin: 0 0 18px;
-}
-
-.hero-cta{
-  display:flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 18px;
-}
-
-.meta{
-  margin-top: 18px;
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  align-items:center;
-  color: var(--muted2);
-  font-size: 13px;
-}
-.chip{
-  border: 1px solid var(--border);
-  background: var(--chip);
-  padding: 7px 10px;
-  border-radius: 999px;
-  display:inline-flex;
-  gap:8px;
-  align-items:center;
-  white-space:nowrap;
-}
-
-/* Highlight card */
-.panel{
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent1);
-  background: var(--card);
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: var(--shadow);
-}
-.panel > *{ position:relative; }
-.panel h3{
-  margin:0 0 10px;
-  font-size: 14px;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--muted) 85%, var(--text));
-}
-.panel p{
-  margin:0 0 12px;
-  color: var(--muted);
-  font-size: 14px;
-}
-.panel ul{
-  margin: 0;
-  padding-left: 18px;
-  color: var(--muted);
-  font-size: 14px;
-}
-.panel li{ margin: 6px 0; }
-
-/* Sections */
-section{
-  padding: 40px 0;
-}
-.section-head{
-  display:flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-.section-head h2{
-  margin:0;
-  font-size: 22px;
-  letter-spacing: -0.02em;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--accent1);
-  display: inline-block;
-}
-.section-head p{
-  margin:0;
-  color: var(--muted2);
-  font-size: 13px;
-  max-width: 62ch;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-}
-@media (max-width: 980px){
-  .grid{ grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 640px){
-  .grid{ grid-template-columns: 1fr; }
-}
-
-.card{
-  border: 1px solid var(--border);
-  border-top: 3px solid var(--accent1);
-  background: var(--card);
-  border-radius: 12px;
-  padding: 18px;
-  box-shadow: var(--shadow);
-  transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
-  min-height: 148px;
-}
-.card:hover{
-  transform: translateY(-3px);
-  border-color: var(--accent1);
-  box-shadow: 0 8px 24px rgba(29,78,216,.12);
-}
-.card h3{
-  margin: 0 0 8px;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--accent1);
-}
-.card p{
-  margin:0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-/* Team */
-.team-grid{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-@media (max-width: 980px){
-  .team-grid{ grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 520px){
-  .team-grid{ grid-template-columns: 1fr; }
-}
-
-.person{
-  border: 1px solid var(--border);
-  background: color-mix(in oklab, var(--card) 92%, transparent);
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-  display:flex;
-  gap: 12px;
-  align-items:flex-start;
-}
-.avatar{
-  width:56px;
-  height:56px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  object-fit:cover;
-  flex:0 0 auto;
-  box-shadow:0 12px 30px rgba(0,0,0,.18);
-  aspect-ratio:1/1;
-}
-.person h3{
-  margin:0;
-  font-size: 15px;
-  letter-spacing:-0.01em;
-}
-.role{
-  margin-top: 2px;
-  font-size: 13px;
-  color: var(--muted2);
-}
-.bio{
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--muted);
-}
-.links{
-  margin-top: 10px;
-  display:flex;
-  gap:10px;
-  flex-wrap: wrap;
-  font-size: 13px;
-}
-.pill{
-  border: 1px solid var(--border);
-  background: var(--chip);
-  padding: 6px 10px;
-  border-radius: 999px;
-  text-decoration:none;
-  color: color-mix(in oklab, var(--text) 80%, var(--muted));
-  font-weight: 600;
-}
-.pill:hover{ text-decoration:none; border-color: color-mix(in oklab, var(--border) 50%, var(--accent2)); }
-
-/* Footer */
-footer{
-  padding: 34px 0 50px;
-  border-top: 1px solid var(--border);
-  color: var(--muted2);
-  font-size: 13px;
-}
-.footer-grid{
-  display:flex;
-  justify-content:space-between;
-  gap: 18px;
-  flex-wrap: wrap;
-  align-items:center;
-}
-
-/* PG logo */
-.pg-logo-link{
-  display:inline-flex;
-  align-items:center;
-  text-decoration:none;
-  opacity:.85;
-  transition: opacity .15s;
-}
-.pg-logo-link:hover{ opacity:1; text-decoration:none; }
-.pg-logo{
-  height:32px;
-  width:auto;
-}
-.pg-logo--footer{
-  height:40px;
-}
-[data-theme="light"] .pg-logo{
-  filter: brightness(0) opacity(0.75);
-}
-[data-theme="dark"] .pg-logo{
-  filter: none;
-}
-
-/* Small helpers */
-.sr-only{
-  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;
-}
-.divider{
-  height:1px;
-  background: var(--border);
-  margin: 26px 0;
-}
-
-/* Publications */
-.pub-controls{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin: 10px 0 16px;
-}
-.pub-btn{
-  border:1px solid var(--border);
-  background: var(--chip);
-  color: color-mix(in oklab, var(--text) 85%, var(--muted));
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 13px;
-  cursor:pointer;
-}
-.pub-btn.active{
-  background: var(--accent1);
-  border-color: var(--accent1);
-  color: #fff;
-}
-.pub-card{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  min-height: 170px;
-}
-.pub-top{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  align-items:center;
-}
-.pub-venue{
-  font-weight:800;
-  letter-spacing:-0.01em;
-}
-.pub-year{
-  color: var(--muted2);
-  font-weight:700;
-}
-.pub-tags{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-.tag{
-  border:1px solid var(--border);
-  background: var(--chip);
-  padding: 5px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 800;
-  color: color-mix(in oklab, var(--text) 80%, var(--muted));
-}
-.pub-title{
-  margin:0;
-  font-size: 15px;
-  letter-spacing: -0.01em;
-}
-.pub-authors{
-  margin:0;
-  color: var(--muted);
-  font-size: 13px;
-}
-.pub-links{
-  margin-top:auto;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
-</style>
-
+    /* FOOTER */
+    footer { padding: 36px 0 48px; border-top: 1px solid var(--rule); }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-name { font-family: var(--serif); font-size: 15px; font-weight: 500; color: var(--text); }
+    .footer-dept { font-size: 13px; color: var(--faint); margin-top: 2px; }
+    .footer-logo { height: 36px; width: auto; opacity: 0.6; transition: opacity 0.15s; }
+    .footer-logo:hover { opacity: 0.9; }
+    .footer-copy { font-size: 12.5px; color: var(--faint); }
+  </style>
 </head>
+<body>
 
-<body data-theme="light">
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="brand-title">
-          <strong>AI & Blockchain Lab</strong>
-          <span>Gdańsk University of Technology</span>
-        </div>
-      </div>
-
-      <nav aria-label="Primary">
-        <a href="#research">Research</a>
-        <a href="#team">Team</a>
-        <a href="#publications">Publications</a>
-        <a href="#collab">Collaborate</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="actions">
-        <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">
-          <span class="icon" aria-hidden="true">🌓</span>
-          Theme
-        </button>
-        <a class="btn primary" href="#collab">
-          <span class="icon" aria-hidden="true">✨</span>
-          Work with us
-        </a>
-      </div>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="wrap">
+      <div class="nav-brand">Trustworthy AI Lab <span>&middot; Gdansk University of Technology</span></div>
+      <ul class="nav-links" role="list">
+        <li><a href="#research">Research</a></li>
+        <li><a href="#people">People</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#collaborate">Collaborate</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-  </div>
+  </nav>
 
   <header class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="kicker">
-          <span class="dot" aria-hidden="true"></span>
-          Department of Computer Architecture · Gdańsk University of Technology (Poland)
-        </div>
-
-        <h1>Artificial Intelligence and Blockchain Lab</h1>
-
-        <p class="lead">
-          We build and study <b>trustworthy AI systems</b> and <b>decentralized infrastructure</b>.
-          Our work spans NLP and large language models, blockchain protocols, and privacy-preserving computation —
-          with a practical focus on real systems that handle sensitive data.
-        </p>
-
-        <div class="hero-cta">
-          <a class="btn primary" href="#research"><span class="icon" aria-hidden="true">🔍</span>Explore research</a>
-          <a class="btn" href="#team"><span class="icon" aria-hidden="true">👥</span>Meet the team</a>
-          <a class="btn" href="#contact"><span class="icon" aria-hidden="true">✉️</span>Contact</a>
-        </div>
-
-        <div class="meta">
-          <span class="chip">Group lead: <b>Prof. Julian Szymański</b></span>
-          <span class="chip">Keywords: <b>NLP</b> · <b>LLMs</b> · <b>Blockchain</b> · <b>Security</b> · <b>Privacy</b></span>
-        </div>
+    <div class="wrap">
+      <p class="hero-affil">Department of Computer Architecture &middot; Gdansk University of Technology</p>
+      <h1 class="hero-title">Trustworthy AI Lab</h1>
+      <p class="hero-sub">We study and build AI systems for sensitive, high-trust settings &mdash; where privacy, reliability, auditability, and real-world deployment matter.</p>
+      <div class="hero-cta">
+        <a class="cta-link" href="#research">Research</a>
+        <a class="cta-link secondary" href="#collaborate">Collaborate</a>
       </div>
-
-      <aside class="panel" aria-label="Highlights">
-        <h3>What we care about</h3>
-        <p>
-          AI is moving from "tools" to "agents". Blockchain is moving from "coins" to "infrastructure".
-          We study what happens when these meet.
-        </p>
-        <ul>
-          <li><b>Trust</b>: who must be honest, and what can be verified?</li>
-          <li><b>Privacy</b>: can we learn from data we are not allowed to see?</li>
-          <li><b>Reliability</b>: can systems stay live under real participation constraints?</li>
-          <li><b>Deployment</b>: can research survive contact with production?</li>
-        </ul>
-      </aside>
     </div>
   </header>
 
   <main>
-    <section id="research">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Research areas</h2>
-            <p>We work at the intersection of language, security, and decentralized systems.</p>
-          </div>
-          <p>Open to academic and industry collaborations.</p>
-        </div>
 
-        <div class="grid">
-          <div class="card">
-            <h3>NLP & Large Language Models</h3>
-            <p>LLM-based systems for understanding, summarization, classification, and decision support — including evaluation under real constraints.</p>
+    <section id="about">
+      <div class="wrap">
+        <p class="section-label">About</p>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>We are a research group at Gdansk University of Technology working at the intersection of AI, distributed systems, privacy, and verifiable infrastructure.</p>
+            <p>Our focus is on systems that must operate under real constraints: sensitive data, adversarial environments, organizational boundaries, and deployment pressure. We care about AI that is not only capable, but measurable, safe, and accountable.</p>
           </div>
-          <div class="card">
-            <h3>Trustworthy AI</h3>
-            <p>Safety, robustness, and accountability of AI systems — especially when they act across organizations and sensitive workflows.</p>
-          </div>
-          <div class="card">
-            <h3>Blockchain protocols & architectures</h3>
-            <p>Design and analysis of decentralized protocols: trust models, liveness assumptions, threat modeling, and protocol engineering.</p>
-          </div>
-          <div class="card">
-            <h3>Privacy-preserving computation</h3>
-            <p>Secure computation techniques enabling collaboration without data exposure: MPC-style thinking, verifiable processing, and secure system design.</p>
-          </div>
-          <div class="card">
-            <h3>AI + Blockchain integration</h3>
-            <p>Architectures where decentralized infrastructure supports transparent AI pipelines: provenance, auditability, and incentive-aware coordination.</p>
-          </div>
-          <div class="card">
-            <h3>Digital public infrastructure</h3>
-            <p>Applied cryptographic systems for high-stakes domains — governance, voting, compliance — with measurable trust assumptions.</p>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="section-head" id="focus">
-          <div>
-            <h2>How we work</h2>
-            <p>Engineering-driven: formalize assumptions, quantify trade-offs, validate with real deployments.</p>
-          </div>
-          <p>Systems that are both <b>useful</b> and <b>defensible</b>.</p>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>Assumption-first design</h3>
-            <p>We make hidden assumptions explicit: threat models, trust boundaries, and liveness conditions — then design around them.</p>
-          </div>
-          <div class="card">
-            <h3>Measure what matters</h3>
-            <p>Instead of "secure-ish", we strive for measurable security and trust properties with clear failure modes.</p>
-          </div>
-          <div class="card">
-            <h3>Real-world constraints</h3>
-            <p>We care about what survives production: UX constraints, incentive pressure, ops reality, and adversarial behavior.</p>
+          <div class="about-meta">
+            <div class="about-meta-item">
+              <span class="about-meta-label">Location</span>
+              <span>Gdansk, Poland</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="about-meta-label">Department</span>
+              <span>Computer Architecture, FETI</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="about-meta-label">Group lead</span>
+              <span>Prof. Julian Szymanski</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="about-meta-label">Focus</span>
+              <span>AI &middot; Privacy &middot; Distributed Systems</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="team">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Team</h2>
-            <p>Based in Gdańsk, Poland. We collaborate with academia and industry on secure AI and decentralized systems.</p>
+    <section id="research">
+      <div class="wrap">
+        <p class="section-label">Research Areas</p>
+        <h2>What we work on</h2>
+        <div class="research-areas">
+          <div class="area-item">
+            <div class="area-num">01</div>
+            <div class="area-title">Large Language Models &amp; Applied AI</div>
+            <p class="area-desc">Evaluation, prototyping, and deployment of LLM-based systems for knowledge work, classification, decision support, and automation.</p>
           </div>
-          <p>Department of Computer Architecture · Gdańsk University of Technology</p>
-        </div>
-
-        <div class="team-grid">
-          <div class="person">
-            <img class="avatar" src="https://julian.eti.pg.gda.pl/images/js2.JPG" alt="Julian Szymański">
-            <div>
-              <h3>Julian Szymański</h3>
-              <div class="role">Professor · Group Lead</div>
-              <div class="bio">
-                Leads the lab at Gdańsk University of Technology. Focus on distributed systems and intelligent computing,
-                with emphasis on deployable research and solid engineering.
-              </div>
-              <div class="links">
-                <a class="pill" href="mailto:julian.szymanski@eti.pg.gda.pl">✉ julian.szymanski@eti.pg.gda.pl</a>
-                <a class="pill" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Most Wiedzy</a>
-              </div>
-            </div>
+          <div class="area-item">
+            <div class="area-num">02</div>
+            <div class="area-title">Trustworthy AI Systems</div>
+            <p class="area-desc">Reliability, robustness, accountability, and safety of AI systems used in sensitive organizational workflows.</p>
           </div>
-
-          <div class="person">
-            <img class="avatar" src="https://cv.stan.bar/avatar.jpg" alt="Stanisław Barański">
-            <div>
-              <h3>Stanisław Barański</h3>
-              <div class="role">Researcher / Engineer</div>
-              <div class="bio">
-                Research at the intersection of blockchain protocols, privacy-preserving and verifiable data processing,
-                and trustworthy ML/NLP systems.
-              </div>
-              <div class="links">
-                <a class="pill" href="mailto:stanislaw.baranski@pg.edu.pl">✉ stanislaw.baranski@pg.edu.pl</a>
-                <a class="pill" href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Most Wiedzy</a>
-              </div>
-            </div>
+          <div class="area-item">
+            <div class="area-num">03</div>
+            <div class="area-title">Privacy-Preserving &amp; Verifiable Computation</div>
+            <p class="area-desc">Systems that enable useful computation while reducing unnecessary data exposure and making critical claims verifiable.</p>
           </div>
-
-          <div class="person">
-            <img class="avatar" src="https://podyplomowe.zie.pg.edu.pl/wp-content/uploads/2021/10/1695669846151.jpg" alt="Jan Majkutewicz">
-            <div>
-              <h3>Jan Majkutewicz</h3>
-              <div class="role">Researcher / Engineer</div>
-              <div class="bio">
-                Works on scalable architectures and practical systems engineering for distributed data processing,
-                bridging research prototypes with robust implementations.
-              </div>
-              <div class="links">
-                <a class="pill" href="mailto:jan.majkutewicz@pg.edu.pl">✉ jan.majkutewicz@pg.edu.pl</a>
-                <a class="pill" href="https://mostwiedzy.pl/pl/jan-majkutewicz,966564-1" target="_blank" rel="noopener">Most Wiedzy</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="person">
-            <img class="avatar" src="https://z3x.io/media/mateusz_gierszewski.jpg" alt="Mateusz Gierszewski">
-            <div>
-              <h3>Mateusz Gierszewski</h3>
-              <div class="role">Researcher / Engineer</div>
-              <div class="bio">
-                Applied work on decentralized protocols and Web3 infrastructure, with a strong engineering focus on security,
-                reliability, and real-world deployments.
-              </div>
-              <div class="links">
-                <a class="pill" href="mailto:mateusz.gierszewski@pg.edu.pl">✉ mateusz.gierszewski@pg.edu.pl</a>
-                <a class="pill" href="https://mostwiedzy.pl/pl/mateusz-gierszewski,1120440-1" target="_blank" rel="noopener">Most Wiedzy</a>
-              </div>
-            </div>
+          <div class="area-item">
+            <div class="area-num">04</div>
+            <div class="area-title">Blockchain &amp; Decentralized Infrastructure</div>
+            <p class="area-desc">Protocols and architectures for auditability, provenance, distributed trust, and resilient digital public infrastructure.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="publications">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Publications</h2>
-            <p>
-              Selected peer-reviewed and preprint outputs: NLP/LLMs, trustworthy AI, blockchain protocols, and privacy-preserving computation.
-            </p>
-          </div>
-          <p>Filter by topic.</p>
+      <div class="wrap">
+        <p class="section-label">Selected Publications</p>
+        <div class="pub-header">
+          <h2>Recent work</h2>
+          <a class="pub-view-all" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">View all publications &rarr;</a>
         </div>
-
-        <div class="pub-controls" aria-label="Publications filters">
-          <button class="pub-btn active" data-filter="all" type="button">All</button>
-          <button class="pub-btn" data-filter="llm" type="button">LLMs</button>
-          <button class="pub-btn" data-filter="nlp" type="button">NLP</button>
-          <button class="pub-btn" data-filter="blockchain" type="button">Blockchain</button>
-          <button class="pub-btn" data-filter="privacy" type="button">Privacy</button>
-          <button class="pub-btn" data-filter="crypto" type="button">Distributed Crypto</button>
-          <button class="pub-btn" data-filter="trust" type="button">Trust / GovTech</button>
-        </div>
-
-        <div class="grid" id="pubGrid">
-
-          <article class="card pub-card" data-tags="crypto blockchain">
-            <div class="pub-top">
-              <span class="pub-venue">Future Generation Computer Systems</span>
-              <span class="pub-year">2026</span>
+        <ul class="pub-list" role="list">
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://www.sciencedirect.com/science/article/pii/S0167739X25005205" target="_blank" rel="noopener">Federated Distributed Key Generation</a>
+              <p class="pub-meta">
+                <span>Stanislaw Baranski, Julian Szymanski</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">Future Generation Computer Systems</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S0167739X25005205" target="_blank" rel="noopener">Publisher</a>
+                <a class="pub-link" href="https://arxiv.org/abs/2502.20835" target="_blank" rel="noopener">arXiv</a>
+                <a class="pub-link" href="https://dblp.org/rec/journals/fgcs/BaranskiS26" target="_blank" rel="noopener">DBLP</a>
+              </div>
             </div>
-            <div class="pub-tags">
-              <span class="tag">Distributed Crypto</span><span class="tag">Threshold</span><span class="tag">Blockchain</span>
+            <div class="pub-year-col"><span class="pub-year-text">2026</span></div>
+          </li>
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://link.springer.com/article/10.1007/s10207-025-01052-w" target="_blank" rel="noopener">Anonymous provision of privacy-sensitive services using blockchain and decentralised storage</a>
+              <p class="pub-meta">
+                <span>Stanislaw Baranski, Julian Szymanski, Higinio Mora</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">International Journal of Information Security</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://link.springer.com/article/10.1007/s10207-025-01052-w" target="_blank" rel="noopener">Springer</a>
+              </div>
             </div>
-            <h3 class="pub-title">Federated Distributed Key Generation</h3>
-            <p class="pub-authors">Stanisław Barański, Julian Szymański</p>
-            <div class="pub-links">
-              <a class="pill" href="https://www.sciencedirect.com/science/article/pii/S0167739X25005205" target="_blank" rel="noopener">Publisher</a>
-              <a class="pill" href="https://arxiv.org/abs/2502.20835" target="_blank" rel="noopener">arXiv</a>
-              <a class="pill" href="https://dblp.org/rec/journals/fgcs/BaranskiS26" target="_blank" rel="noopener">DBLP</a>
+            <div class="pub-year-col"><span class="pub-year-text">2025</span></div>
+          </li>
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://www.sciencedirect.com/science/article/pii/S0950705125006124" target="_blank" rel="noopener">Aligning large language models with human preferences using historical text edits</a>
+              <p class="pub-meta">
+                <span>Jan Majkutewicz, Julian Szymanski</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">Knowledge-Based Systems</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S0950705125006124" target="_blank" rel="noopener">Publisher</a>
+              </div>
             </div>
-          </article>
-
-          <article class="card pub-card" data-tags="blockchain privacy trust">
-            <div class="pub-top">
-              <span class="pub-venue">International Journal of Information Security</span>
-              <span class="pub-year">2025</span>
+            <div class="pub-year-col"><span class="pub-year-text">2025</span></div>
+          </li>
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://link.springer.com/book/10.1007/978-3-032-02406-0" target="_blank" rel="noopener">An Integrated Approach for Prototyping and Deploying Large Language Models</a>
+              <p class="pub-meta">
+                <span>Jan Majkutewicz, Julian Szymanski</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">CISIM 2025, Springer Proceedings</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://link.springer.com/book/10.1007/978-3-032-02406-0" target="_blank" rel="noopener">Springer</a>
+              </div>
             </div>
-            <div class="pub-tags">
-              <span class="tag">Blockchain</span><span class="tag">Privacy</span><span class="tag">Decentralised Storage</span>
+            <div class="pub-year-col"><span class="pub-year-text">2025</span></div>
+          </li>
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://journal.mostwiedzy.pl/TASKQuarterly/article/view/3534" target="_blank" rel="noopener">A Survey on Privacy-Preserving Machine Learning Inference</a>
+              <p class="pub-meta">
+                <span>Stanislaw Baranski</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">TASK Quarterly</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://journal.mostwiedzy.pl/TASKQuarterly/article/view/3534" target="_blank" rel="noopener">Journal</a>
+              </div>
             </div>
-            <h3 class="pub-title">Anonymous provision of privacy-sensitive services using blockchain and decentralised storage</h3>
-            <p class="pub-authors">Stanisław Barański, Julian Szymański, Higinio Mora</p>
-            <div class="pub-links">
-              <a class="pill" href="https://link.springer.com/article/10.1007/s10207-025-01052-w" target="_blank" rel="noopener">Springer</a>
+            <div class="pub-year-col"><span class="pub-year-text">2024</span></div>
+          </li>
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://arxiv.org/abs/2412.10611" target="_blank" rel="noopener">A Trust-Centric Approach To Quantifying Maturity and Security in Internet Voting Protocols</a>
+              <p class="pub-meta">
+                <span>Stanislaw Baranski, Ben Biedermann, Joshua Ellul</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">arXiv preprint</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://arxiv.org/abs/2412.10611" target="_blank" rel="noopener">arXiv</a>
+                <a class="pub-link" href="https://dblp.org/rec/journals/corr/abs-2412-10611" target="_blank" rel="noopener">DBLP</a>
+              </div>
             </div>
-          </article>
-
-          <article class="card pub-card" data-tags="llm nlp">
-            <div class="pub-top">
-              <span class="pub-venue">Knowledge-Based Systems</span>
-              <span class="pub-year">2025</span>
+            <div class="pub-year-col"><span class="pub-year-text">2024</span></div>
+          </li>
+          <li class="pub-entry">
+            <div>
+              <a class="pub-title-link" href="https://dblp.org/pid/40/1153.html" target="_blank" rel="noopener">Path-based methods on categorical structures for conceptual representation of Wikipedia articles</a>
+              <p class="pub-meta">
+                <span>Lukasz Kucharczyk, Julian Szymanski</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-venue">Journal of Intelligent Information Systems</span>
+              </p>
+              <div class="pub-links-row">
+                <a class="pub-link" href="https://dblp.org/pid/40/1153.html" target="_blank" rel="noopener">DBLP</a>
+              </div>
             </div>
-            <div class="pub-tags">
-              <span class="tag">LLMs</span><span class="tag">Alignment</span><span class="tag">Preference Data</span>
-            </div>
-            <h3 class="pub-title">Aligning large language models with human preferences using historical text edits</h3>
-            <p class="pub-authors">Jan Majkutewicz, Julian Szymański</p>
-            <div class="pub-links">
-              <a class="pill" href="https://www.sciencedirect.com/science/article/pii/S0950705125006124" target="_blank" rel="noopener">Publisher</a>
-            </div>
-          </article>
-
-          <article class="card pub-card" data-tags="llm nlp">
-            <div class="pub-top">
-              <span class="pub-venue">CISIM 2025 (Springer Proceedings)</span>
-              <span class="pub-year">2025</span>
-            </div>
-            <div class="pub-tags">
-              <span class="tag">LLMs</span><span class="tag">Deployment</span><span class="tag">Systems</span>
-            </div>
-            <h3 class="pub-title">An Integrated Approach for Prototyping and Deploying Large Language Models</h3>
-            <p class="pub-authors">Jan Majkutewicz, Julian Szymański</p>
-            <div class="pub-links">
-              <a class="pill" href="https://link.springer.com/book/10.1007/978-3-032-02406-0" target="_blank" rel="noopener">Springer</a>
-            </div>
-          </article>
-
-          <article class="card pub-card" data-tags="privacy llm trust">
-            <div class="pub-top">
-              <span class="pub-venue">TASK Quarterly</span>
-              <span class="pub-year">2024</span>
-            </div>
-            <div class="pub-tags">
-              <span class="tag">Privacy</span><span class="tag">PPML</span><span class="tag">Inference</span>
-            </div>
-            <h3 class="pub-title">A Survey on Privacy-Preserving Machine Learning Inference</h3>
-            <p class="pub-authors">Stanisław Barański</p>
-            <div class="pub-links">
-              <a class="pill" href="https://journal.mostwiedzy.pl/TASKQuarterly/article/view/3534" target="_blank" rel="noopener">Journal</a>
-            </div>
-          </article>
-
-          <article class="card pub-card" data-tags="trust blockchain">
-            <div class="pub-top">
-              <span class="pub-venue">arXiv (preprint)</span>
-              <span class="pub-year">2024</span>
-            </div>
-            <div class="pub-tags">
-              <span class="tag">Trust Models</span><span class="tag">GovTech</span><span class="tag">Voting</span>
-            </div>
-            <h3 class="pub-title">A Trust-Centric Approach To Quantifying Maturity and Security in Internet Voting Protocols</h3>
-            <p class="pub-authors">Stanisław Barański, Ben Biedermann, Joshua Ellul</p>
-            <div class="pub-links">
-              <a class="pill" href="https://arxiv.org/abs/2412.10611" target="_blank" rel="noopener">arXiv</a>
-              <a class="pill" href="https://dblp.org/rec/journals/corr/abs-2412-10611" target="_blank" rel="noopener">DBLP</a>
-            </div>
-          </article>
-
-          <article class="card pub-card" data-tags="nlp">
-            <div class="pub-top">
-              <span class="pub-venue">Journal of Intelligent Information Systems</span>
-              <span class="pub-year">2017</span>
-            </div>
-            <div class="pub-tags">
-              <span class="tag">NLP/IR</span><span class="tag">Knowledge Graph</span><span class="tag">Representation</span>
-            </div>
-            <h3 class="pub-title">Path-based methods on categorical structures for conceptual representation of Wikipedia articles</h3>
-            <p class="pub-authors">Łukasz Kucharczyk, Julian Szymański</p>
-            <div class="pub-links">
-              <a class="pill" href="https://dblp.org/pid/40/1153.html" target="_blank" rel="noopener">DBLP</a>
-            </div>
-          </article>
-
-          <article class="card pub-card" data-tags="nlp">
-            <div class="pub-top">
-              <span class="pub-venue">LNCS / Springer (IKC / KEYSTONE)</span>
-              <span class="pub-year">2018</span>
-            </div>
-            <div class="pub-tags">
-              <span class="tag">Semantic Search</span><span class="tag">Structured Data</span>
-            </div>
-            <h3 class="pub-title">Semantic Keyword-Based Search on Structured Data Sources</h3>
-            <p class="pub-authors">Julian Szymański, Yannis Velegrakis</p>
-            <div class="pub-links">
-              <a class="pill" href="https://dblp.org/db/conf/cost/ikc2017" target="_blank" rel="noopener">DBLP</a>
-            </div>
-          </article>
-
-        </div>
-
-        <p style="margin-top:14px; color: var(--muted2); font-size: 13px;">
-          Publications relevant to the lab themes. Some team members also publish in other domains, intentionally omitted here.
-        </p>
+            <div class="pub-year-col"><span class="pub-year-text">2017</span></div>
+          </li>
+        </ul>
+        <p class="pub-note">Publications relevant to lab themes. <a href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Full list on Most Wiedzy &rarr;</a></p>
       </div>
     </section>
 
-    <section id="collab">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Collaborate with us</h2>
-            <p>We are interested in joint work where security, privacy, and trust are first-class requirements.</p>
+    <section id="people">
+      <div class="wrap">
+        <p class="section-label">People</p>
+        <h2>The team</h2>
+        <div class="people-grid">
+          <div class="person-card">
+            <img class="person-photo" src="https://julian.eti.pg.gda.pl/images/js2.JPG" alt="Julian Szymanski" loading="lazy" />
+            <div class="person-name">Julian Szymanski</div>
+            <div class="person-role">Professor &middot; Group Lead</div>
+            <div class="person-links">
+              <a href="mailto:julian.szymanski@eti.pg.gda.pl">julian.szymanski@eti.pg.gda.pl</a>
+              <a href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+            </div>
           </div>
-          <p>Students and partners welcome.</p>
+          <div class="person-card">
+            <img class="person-photo" src="https://stan.bar/avatar-professional.jpg" alt="Stanislaw Baranski" loading="lazy" />
+            <div class="person-name">Stanislaw Baranski</div>
+            <div class="person-role">Researcher Engineer</div>
+            <div class="person-links">
+              <a href="mailto:stanislaw.baranski@pg.edu.pl">stanislaw.baranski@pg.edu.pl</a>
+              <a href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+            </div>
+          </div>
+          <div class="person-card">
+            <img class="person-photo" src="https://podyplomowe.zie.pg.edu.pl/wp-content/uploads/2021/10/1695669846151.jpg" alt="Jan Majkutewicz" loading="lazy" />
+            <div class="person-name">Jan Majkutewicz</div>
+            <div class="person-role">Researcher Engineer</div>
+            <div class="person-links">
+              <a href="mailto:jan.majkutewicz@pg.edu.pl">jan.majkutewicz@pg.edu.pl</a>
+              <a href="https://mostwiedzy.pl/pl/jan-majkutewicz,966564-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+            </div>
+          </div>
+          <div class="person-card">
+            <img class="person-photo" src="https://z3x.io/media/mateusz_gierszewski.jpg" alt="Mateusz Gierszewski" loading="lazy" />
+            <div class="person-name">Mateusz Gierszewski</div>
+            <div class="person-role">Researcher Engineer</div>
+            <div class="person-links">
+              <a href="mailto:mateusz.gierszewski@pg.edu.pl">mateusz.gierszewski@pg.edu.pl</a>
+              <a href="https://mostwiedzy.pl/pl/mateusz-gierszewski,1120440-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+            </div>
+          </div>
+          <div class="person-card">
+            <img class="person-photo" src="https://mostwiedzy.pl/assets/Szymon-Olewniczak,902337-1/photo.png" alt="Szymon Olewniczak" loading="lazy" />
+            <div class="person-name">Szymon Olewniczak</div>
+            <div class="person-role">Researcher Engineer</div>
+            <div class="person-links">
+              <a href="mailto:szymon.olewniczak@pg.edu.pl">szymon.olewniczak@pg.edu.pl</a>
+              <a href="https://mostwiedzy.pl/pl/szymon-olewniczak,902337-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+            </div>
+          </div>
+          <div class="person-card">
+            <img class="person-photo" src="https://mostwiedzy.pl/assets/Micha%C5%82-Ko%C5%9Bciowski,145365-1/photo.png" alt="Michal Kosciowski" loading="lazy" />
+            <div class="person-name">Michal Kosciowski</div>
+            <div class="person-role">Researcher Engineer</div>
+            <div class="person-links">
+              <a href="mailto:michal.kosciowski@pg.edu.pl">michal.kosciowski@pg.edu.pl</a>
+              <a href="https://www.linkedin.com/in/michal-kosciowski-84b4bb27/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="grid">
-          <div class="card">
-            <h3>Academic research</h3>
-            <p>Co-authored papers, shared datasets, evaluation frameworks, and joint supervision for MSc/PhD work.</p>
+    <section id="collaborate">
+      <div class="wrap">
+        <p class="section-label">Collaborate</p>
+        <h2>Work with us</h2>
+        <p class="section-body">We are open to academic and industry partnerships where AI must be useful, measurable, and safe under real-world constraints.</p>
+        <div class="collab-modes">
+          <div class="collab-mode">
+            <div class="collab-mode-title">Academic collaboration</div>
+            <p class="collab-mode-desc">Joint publications, datasets, evaluation frameworks, student supervision, and research visits.</p>
           </div>
-          <div class="card">
-            <h3>Industry R&D</h3>
-            <p>Prototype-to-production collaboration on trustworthy AI, privacy-preserving analytics, and blockchain system design.</p>
+          <div class="collab-mode">
+            <div class="collab-mode-title">Industry R&amp;D</div>
+            <p class="collab-mode-desc">Short exploratory projects, prototypes, architecture reviews, and evaluation of AI systems in real workflows.</p>
           </div>
-          <div class="card">
-            <h3>Grants & consortia</h3>
-            <p>We participate in projects where decentralized infrastructure and AI must meet compliance and adversarial settings.</p>
+          <div class="collab-mode">
+            <div class="collab-mode-title">Grants &amp; consortia</div>
+            <p class="collab-mode-desc">Research partnerships around trustworthy AI, privacy, decentralized infrastructure, and digital public systems.</p>
           </div>
+        </div>
+        <div class="collab-note">
+          <strong>Especially interested in:</strong> problems where AI must be useful, measurable, and safe under real-world constraints &mdash; sensitive data, organizational boundaries, or adversarial settings.
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="container">
-        <div class="section-head">
+      <div class="wrap">
+        <p class="section-label">Contact</p>
+        <h2>Get in touch</h2>
+        <div class="contact-layout">
           <div>
-            <h2>Contact</h2>
-            <p>If you want to collaborate, host a visit, or discuss a project, reach out directly.</p>
+            <div class="contact-block">
+              <p class="contact-label">Affiliation</p>
+              <p class="contact-address">
+                Department of Computer Architecture<br />
+                Faculty of Electronics, Telecommunications and Informatics<br />
+                Gdansk University of Technology (Politechnika Gdanska)<br />
+                Gdansk, Poland
+              </p>
+            </div>
           </div>
-          <p>Gdańsk University of Technology · Poland</p>
-        </div>
-
-        <div class="grid">
-          <div class="card">
-            <h3>Affiliation</h3>
-            <p>
-              Department of Computer Architecture<br>
-              Faculty of Electronics, Telecommunications and Informatics<br>
-              Gdańsk University of Technology (Politechnika Gdańska)<br>
-              Gdańsk, Poland
-            </p>
-          </div>
-          <div class="card">
-            <h3>Email</h3>
-            <p>
-              <b>Julian Szymański</b> (group lead)<br>
-              <a href="mailto:julian.szymanski@eti.pg.gda.pl">julian.szymanski@eti.pg.gda.pl</a><br><br>
-              <b>Stanisław Barański</b><br>
-              <a href="mailto:stanislaw.baranski@pg.edu.pl">stanislaw.baranski@pg.edu.pl</a><br><br>
-              <b>Jan Majkutewicz</b><br>
-              <a href="mailto:jan.majkutewicz@pg.edu.pl">jan.majkutewicz@pg.edu.pl</a><br><br>
-              <b>Mateusz Gierszewski</b><br>
-              <a href="mailto:mateusz.gierszewski@pg.edu.pl">mateusz.gierszewski@pg.edu.pl</a>
-            </p>
-          </div>
-          <div class="card">
-            <h3>Institutional profiles</h3>
-            <p>
-              <a href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Julian Szymański</a><br>
-              <a href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Stanisław Barański</a><br>
-              <a href="https://mostwiedzy.pl/pl/jan-majkutewicz,966564-1" target="_blank" rel="noopener">Jan Majkutewicz</a><br>
-              <a href="https://mostwiedzy.pl/pl/mateusz-gierszewski,1120440-1" target="_blank" rel="noopener">Mateusz Gierszewski</a>
-            </p>
-          </div>
+          <div>
+            <p class="contact-label">Team contacts</p>
+            <ul class="people-contact-list" role="list">
+              <li>
+                <span class="pc-name">Julian Szymanski</span>
+                <a class="pc-email" href="mailto:julian.szymanski@eti.pg.gda.pl">julian.szymanski@eti.pg.gda.pl</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+              </li>
+              <li>
+                <span class="pc-name">Stanislaw Baranski</span>
+                <a class="pc-email" href="mailto:stanislaw.baranski@pg.edu.pl">stanislaw.baranski@pg.edu.pl</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+              </li>
+              <li>
+                <span class="pc-name">Jan Majkutewicz</span>
+                <a class="pc-email" href="mailto:jan.majkutewicz@pg.edu.pl">jan.majkutewicz@pg.edu.pl</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/jan-majkutewicz,966564-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+              </li>
+              <li>
+                <span class="pc-name">Mateusz Gierszewski</span>
+                <a class="pc-email" href="mailto:mateusz.gierszewski@pg.edu.pl">mateusz.gierszewski@pg.edu.pl</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/mateusz-gierszewski,1120440-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+              </li>
+              <li>
+                <span class="pc-name">Szymon Olewniczak</span>
+                <a class="pc-email" href="mailto:szymon.olewniczak@pg.edu.pl">szymon.olewniczak@pg.edu.pl</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/szymon-olewniczak,902337-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+              </li>
+              <li>
+                <span class="pc-name">Michal Kosciowski</span>
+                <a class="pc-email" href="mailto:michal.kosciowski@pg.edu.pl">michal.kosciowski@pg.edu.pl</a>
+                <a class="pc-profile" href="https://www.linkedin.com/in/michal-kosciowski-84b4bb27/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+              </li>
+            </ul>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="container footer-grid">
+    <div class="wrap footer-inner">
       <div>
-        <b>Artificial Intelligence and Blockchain Lab</b><br/>
-        <span>Department of Computer Architecture · Gdańsk University of Technology</span>
+        <div class="footer-name">Trustworthy AI Lab</div>
+        <div class="footer-dept">Department of Computer Architecture &middot; Gdansk University of Technology</div>
       </div>
-      <a href="https://pg.edu.pl" target="_blank" rel="noopener" class="pg-logo-link" aria-label="Gdańsk University of Technology">
-        <img class="pg-logo pg-logo--footer" src="https://pg.edu.pl/themes/custom/politechnika_gdanska/images/pg-logotyp-eng.svg" alt="Gdańsk University of Technology" />
+      <a href="https://pg.edu.pl" target="_blank" rel="noopener" aria-label="Gdansk University of Technology">
+        <img class="footer-logo" src="https://pg.edu.pl/themes/custom/politechnika_gdanska/images/pg-logotyp-eng.svg" alt="Gdansk University of Technology" />
       </a>
-      <div>
-        <span>© <span id="year"></span> · Gdańsk University of Technology</span>
-      </div>
+      <p class="footer-copy">&copy; <span id="yr"></span> Gdansk University of Technology</p>
     </div>
   </footer>
 
   <script>
-    // Year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
 
-    // Theme toggle with persistence
-    const root = document.documentElement;
-    const btn = document.getElementById("themeBtn");
-
-    function applyTheme(theme){
-      document.body.setAttribute("data-theme", theme);
-      localStorage.setItem("aiblab_theme", theme);
-    }
-
-    const saved = localStorage.getItem("aiblab_theme");
-    if(saved === "light" || saved === "dark") applyTheme(saved);
-
-    btn.addEventListener("click", () => {
-      const current = document.body.getAttribute("data-theme") || "dark";
-      applyTheme(current === "dark" ? "light" : "dark");
-    });
-
-    // Publication filter
-    const pubBtns = document.querySelectorAll(".pub-btn");
-    const pubCards = document.querySelectorAll("#pubGrid .pub-card");
-
-    pubBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        pubBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const filter = btn.dataset.filter;
-        pubCards.forEach(card => {
-          const tags = card.dataset.tags || "";
-          card.style.display = (filter === "all" || tags.split(" ").includes(filter)) ? "" : "none";
-        });
-      });
-    });
-</script>
 </body>
 </html>
