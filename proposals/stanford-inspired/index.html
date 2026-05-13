@@ -4,17 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Trustworthy AI Lab — Gdansk University of Technology</title>
-  <meta name="description" content="Trustworthy AI Lab at Gdansk University of Technology. Research in trustworthy AI systems, large language models, privacy-preserving computation, and decentralized infrastructure." />
+  <meta name="description" content="Trustworthy AI Lab at Gdansk University of Technology. Research in trustworthy AI systems, large language models, privacy-preserving computation, HPC and energy-aware computing." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <nav class="site-nav" aria-label="Primary navigation">
-    <div class="wrap">
-      <div class="nav-brand">Trustworthy AI Lab <span>&middot; Gdansk University of Technology</span></div>
+  <div class="uni-bar">
+    <div class="container">
+      <a href="https://pg.edu.pl" class="uni-bar-link">Gdansk University of Technology</a>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a href="#" class="nav-brand">
+        <span class="nav-brand-name">Trustworthy AI Lab</span>
+      </a>
       <ul class="nav-links" role="list">
         <li><a href="#research">Research</a></li>
         <li><a href="#people">People</a></li>
@@ -26,85 +34,80 @@
   </nav>
 
   <header class="hero">
-    <div class="wrap">
-      <p class="hero-affil">Department of Computer Architecture &middot; Gdansk University of Technology</p>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-affil">Department of Computer Architecture</p>
       <h1 class="hero-title">Trustworthy AI Lab</h1>
-      <p class="hero-sub">We study and build AI systems for sensitive, high-trust settings &mdash; where privacy, reliability, auditability, and real-world deployment matter.</p>
+      <p class="hero-sub">AI systems for sensitive, high-trust settings &mdash; where privacy, reliability, auditability, and real-world deployment matter.</p>
       <div class="hero-cta">
-        <a class="cta-link" href="#research">Research</a>
-        <a class="cta-link secondary" href="#collaborate">Collaborate</a>
+        <a class="btn" href="#research">Explore our research</a>
+        <a class="btn btn-outline" href="#collaborate">Work with us</a>
       </div>
     </div>
   </header>
 
   <main>
-
     <section id="about">
-      <div class="wrap">
-        <p class="section-label">About</p>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-symbol">&#167;</span>
+          <h2>About</h2>
+        </div>
         <div class="about-grid">
           <div class="about-text">
             <p>We are a research group at Gdansk University of Technology working at the intersection of AI, distributed systems, privacy, and verifiable infrastructure.</p>
             <p>Our focus is on systems that must operate under real constraints: sensitive data, adversarial environments, organizational boundaries, and deployment pressure. We care about AI that is not only capable, but measurable, safe, and accountable.</p>
           </div>
-          <div class="about-meta">
-            <div class="about-meta-item">
-              <span class="about-meta-label">Location</span>
-              <span>Gdansk, Poland</span>
-            </div>
-            <div class="about-meta-item">
-              <span class="about-meta-label">Department</span>
-              <span>Computer Architecture, FETI</span>
-            </div>
-            <div class="about-meta-item">
-              <span class="about-meta-label">Group lead</span>
-              <span>Prof. Julian Szymanski</span>
-            </div>
-            <div class="about-meta-item">
-              <span class="about-meta-label">Focus</span>
-              <span>AI &middot; Privacy &middot; Distributed Systems</span>
-            </div>
+          <div class="about-facts">
+            <div class="fact-item"><span class="fact-label">Location</span> Gdansk, Poland</div>
+            <div class="fact-item"><span class="fact-label">Department</span> Computer Architecture, FETI</div>
+            <div class="fact-item"><span class="fact-label">Group lead</span> Prof. Julian Szymanski</div>
+            <div class="fact-item"><span class="fact-label">Focus</span> AI &middot; Privacy &middot; Distributed Systems</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="research">
-      <div class="wrap">
-        <p class="section-label">Research Areas</p>
-        <h2>What we work on</h2>
-        <div class="research-areas">
-          <div class="area-item">
-            <div class="area-num">01</div>
-            <div class="area-title">Large Language Models &amp; Applied AI</div>
-            <p class="area-desc">Evaluation, prototyping, and deployment of LLM-based systems for knowledge work, classification, decision support, and automation.</p>
-          </div>
-          <div class="area-item">
-            <div class="area-num">02</div>
-            <div class="area-title">Trustworthy AI Systems</div>
-            <p class="area-desc">Reliability, robustness, accountability, and safety of AI systems used in sensitive organizational workflows.</p>
-          </div>
-          <div class="area-item">
-            <div class="area-num">03</div>
-            <div class="area-title">Privacy-Preserving &amp; Verifiable Computation</div>
-            <p class="area-desc">Systems that enable useful computation while reducing unnecessary data exposure and making critical claims verifiable.</p>
-          </div>
-          <div class="area-item">
-            <div class="area-num">04</div>
-            <div class="area-title">Blockchain &amp; Decentralized Infrastructure</div>
-            <p class="area-desc">Protocols and architectures for auditability, provenance, distributed trust, and resilient digital public infrastructure.</p>
-          </div>
+    <section id="research" class="section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-symbol">&#9632;</span>
+          <h2>Research Areas</h2>
+        </div>
+        <p class="section-body">What we work on</p>
+        <div class="research-grid">
+          <article class="research-card">
+            <span class="card-tag">01</span>
+            <h3 class="card-title">Large Language Models &amp; Applied AI</h3>
+            <p class="card-desc">Evaluation, prototyping, and deployment of LLM-based systems for knowledge work, classification, decision support, and automation. We explore instruction tuning, retrieval-augmented generation, and efficient inference.</p>
+          </article>
+          <article class="research-card">
+            <span class="card-tag">02</span>
+            <h3 class="card-title">Trustworthy AI Systems</h3>
+            <p class="card-desc">Reliability, robustness, accountability, and safety of AI systems used in sensitive organizational workflows. We develop methods for verification, monitoring, and alignment of deployed models.</p>
+          </article>
+          <article class="research-card">
+            <span class="card-tag">03</span>
+            <h3 class="card-title">Privacy-Preserving &amp; Verifiable Computation</h3>
+            <p class="card-desc">Systems that enable useful computation while reducing unnecessary data exposure and making critical claims verifiable. Topics include federated learning, secure multi-party computation, and zero-knowledge proofs.</p>
+          </article>
+          <article class="research-card">
+            <span class="card-tag">04</span>
+            <h3 class="card-title">HPC &amp; Energy Aware Computing</h3>
+            <p class="card-desc">High-performance computing infrastructure for AI workloads with a focus on energy-efficient computation, green AI, and sustainable data center design. Research into energy-aware scheduling, power-constrained optimization, and carbon-aware distributed systems.</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section id="publications">
-      <div class="wrap">
-        <p class="section-label">Selected Publications</p>
-        <div class="pub-header">
-          <h2>Recent work</h2>
-          <a class="pub-view-all" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">View all publications &rarr;</a>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-symbol">&#91;</span>
+          <h2>Selected Publications</h2>
         </div>
+        <p class="section-body">Recent work</p>
         <ul class="pub-list" role="list">
           <li class="pub-entry">
             <div>
@@ -113,6 +116,8 @@
                 <span>Stanislaw Baranski, Julian Szymanski</span>
                 <span class="pub-sep">&middot;</span>
                 <span class="pub-venue">Future Generation Computer Systems</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-year-text">2026</span>
               </p>
               <div class="pub-links-row">
                 <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S0167739X25005205" target="_blank" rel="noopener">Publisher</a>
@@ -120,7 +125,6 @@
                 <a class="pub-link" href="https://dblp.org/rec/journals/fgcs/BaranskiS26" target="_blank" rel="noopener">DBLP</a>
               </div>
             </div>
-            <div class="pub-year-col"><span class="pub-year-text">2026</span></div>
           </li>
           <li class="pub-entry">
             <div>
@@ -129,12 +133,13 @@
                 <span>Stanislaw Baranski, Julian Szymanski, Higinio Mora</span>
                 <span class="pub-sep">&middot;</span>
                 <span class="pub-venue">International Journal of Information Security</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-year-text">2025</span>
               </p>
               <div class="pub-links-row">
                 <a class="pub-link" href="https://link.springer.com/article/10.1007/s10207-025-01052-w" target="_blank" rel="noopener">Springer</a>
               </div>
             </div>
-            <div class="pub-year-col"><span class="pub-year-text">2025</span></div>
           </li>
           <li class="pub-entry">
             <div>
@@ -143,12 +148,13 @@
                 <span>Jan Majkutewicz, Julian Szymanski</span>
                 <span class="pub-sep">&middot;</span>
                 <span class="pub-venue">Knowledge-Based Systems</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-year-text">2025</span>
               </p>
               <div class="pub-links-row">
                 <a class="pub-link" href="https://www.sciencedirect.com/science/article/pii/S0950705125006124" target="_blank" rel="noopener">Publisher</a>
               </div>
             </div>
-            <div class="pub-year-col"><span class="pub-year-text">2025</span></div>
           </li>
           <li class="pub-entry">
             <div>
@@ -157,12 +163,13 @@
                 <span>Jan Majkutewicz, Julian Szymanski</span>
                 <span class="pub-sep">&middot;</span>
                 <span class="pub-venue">CISIM 2025, Springer Proceedings</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-year-text">2025</span>
               </p>
               <div class="pub-links-row">
                 <a class="pub-link" href="https://link.springer.com/book/10.1007/978-3-032-02406-0" target="_blank" rel="noopener">Springer</a>
               </div>
             </div>
-            <div class="pub-year-col"><span class="pub-year-text">2025</span></div>
           </li>
           <li class="pub-entry">
             <div>
@@ -171,12 +178,13 @@
                 <span>Stanislaw Baranski</span>
                 <span class="pub-sep">&middot;</span>
                 <span class="pub-venue">TASK Quarterly</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-year-text">2024</span>
               </p>
               <div class="pub-links-row">
                 <a class="pub-link" href="https://journal.mostwiedzy.pl/TASKQuarterly/article/view/3534" target="_blank" rel="noopener">Journal</a>
               </div>
             </div>
-            <div class="pub-year-col"><span class="pub-year-text">2024</span></div>
           </li>
           <li class="pub-entry">
             <div>
@@ -185,37 +193,26 @@
                 <span>Stanislaw Baranski, Ben Biedermann, Joshua Ellul</span>
                 <span class="pub-sep">&middot;</span>
                 <span class="pub-venue">arXiv preprint</span>
+                <span class="pub-sep">&middot;</span>
+                <span class="pub-year-text">2024</span>
               </p>
               <div class="pub-links-row">
                 <a class="pub-link" href="https://arxiv.org/abs/2412.10611" target="_blank" rel="noopener">arXiv</a>
                 <a class="pub-link" href="https://dblp.org/rec/journals/corr/abs-2412-10611" target="_blank" rel="noopener">DBLP</a>
               </div>
             </div>
-            <div class="pub-year-col"><span class="pub-year-text">2024</span></div>
-          </li>
-          <li class="pub-entry">
-            <div>
-              <a class="pub-title-link" href="https://dblp.org/pid/40/1153.html" target="_blank" rel="noopener">Path-based methods on categorical structures for conceptual representation of Wikipedia articles</a>
-              <p class="pub-meta">
-                <span>Lukasz Kucharczyk, Julian Szymanski</span>
-                <span class="pub-sep">&middot;</span>
-                <span class="pub-venue">Journal of Intelligent Information Systems</span>
-              </p>
-              <div class="pub-links-row">
-                <a class="pub-link" href="https://dblp.org/pid/40/1153.html" target="_blank" rel="noopener">DBLP</a>
-              </div>
-            </div>
-            <div class="pub-year-col"><span class="pub-year-text">2017</span></div>
           </li>
         </ul>
         <p class="pub-note">Publications relevant to lab themes. <a href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Full list on Most Wiedzy &rarr;</a></p>
       </div>
     </section>
 
-    <section id="people">
-      <div class="wrap">
-        <p class="section-label">People</p>
-        <h2>The team</h2>
+    <section id="people" class="section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-symbol">&#9827;</span>
+          <h2>The Team</h2>
+        </div>
         <div class="people-grid">
           <div class="person-card">
             <img class="person-photo" src="https://julian.eti.pg.gda.pl/images/js2.JPG" alt="Julian Szymanski" loading="lazy" />
@@ -276,22 +273,24 @@
     </section>
 
     <section id="collaborate">
-      <div class="wrap">
-        <p class="section-label">Collaborate</p>
-        <h2>Work with us</h2>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-symbol">&#9998;</span>
+          <h2>Collaborate</h2>
+        </div>
         <p class="section-body">We are open to academic and industry partnerships where AI must be useful, measurable, and safe under real-world constraints.</p>
-        <div class="collab-modes">
+        <div class="collab-grid">
           <div class="collab-mode">
-            <div class="collab-mode-title">Academic collaboration</div>
-            <p class="collab-mode-desc">Joint publications, datasets, evaluation frameworks, student supervision, and research visits.</p>
+            <h3 class="collab-title">Academic collaboration</h3>
+            <p>Joint publications, datasets, evaluation frameworks, student supervision, and research visits.</p>
           </div>
           <div class="collab-mode">
-            <div class="collab-mode-title">Industry R&amp;D</div>
-            <p class="collab-mode-desc">Short exploratory projects, prototypes, architecture reviews, and evaluation of AI systems in real workflows.</p>
+            <h3 class="collab-title">Industry R&amp;D</h3>
+            <p>Short exploratory projects, prototypes, architecture reviews, and evaluation of AI systems in real workflows.</p>
           </div>
           <div class="collab-mode">
-            <div class="collab-mode-title">Grants &amp; consortia</div>
-            <p class="collab-mode-desc">Research partnerships around trustworthy AI, privacy, decentralized infrastructure, and digital public systems.</p>
+            <h3 class="collab-title">Grants &amp; consortia</h3>
+            <p>Research partnerships around trustworthy AI, privacy, decentralized infrastructure, and digital public systems.</p>
           </div>
         </div>
         <div class="collab-note">
@@ -300,10 +299,12 @@
       </div>
     </section>
 
-    <section id="contact">
-      <div class="wrap">
-        <p class="section-label">Contact</p>
-        <h2>Get in touch</h2>
+    <section id="contact" class="section-tinted">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-symbol">&#9993;</span>
+          <h2>Contact</h2>
+        </div>
         <div class="contact-layout">
           <div>
             <div class="contact-block">
@@ -322,27 +323,27 @@
               <li>
                 <span class="pc-name">Julian Szymanski</span>
                 <a class="pc-email" href="mailto:julian.szymanski@eti.pg.gda.pl">julian.szymanski@eti.pg.gda.pl</a>
-                <a class="pc-profile" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/julian-szymanski,14636-1" target="_blank" rel="noopener">Profile &rarr;</a>
               </li>
               <li>
                 <span class="pc-name">Stanislaw Baranski</span>
                 <a class="pc-email" href="mailto:stanislaw.baranski@pg.edu.pl">stanislaw.baranski@pg.edu.pl</a>
-                <a class="pc-profile" href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/stanislaw-baranski,1027556-1" target="_blank" rel="noopener">Profile &rarr;</a>
               </li>
               <li>
                 <span class="pc-name">Jan Majkutewicz</span>
                 <a class="pc-email" href="mailto:jan.majkutewicz@pg.edu.pl">jan.majkutewicz@pg.edu.pl</a>
-                <a class="pc-profile" href="https://mostwiedzy.pl/pl/jan-majkutewicz,966564-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/jan-majkutewicz,966564-1" target="_blank" rel="noopener">Profile &rarr;</a>
               </li>
               <li>
                 <span class="pc-name">Mateusz Gierszewski</span>
                 <a class="pc-email" href="mailto:mateusz.gierszewski@pg.edu.pl">mateusz.gierszewski@pg.edu.pl</a>
-                <a class="pc-profile" href="https://mostwiedzy.pl/pl/mateusz-gierszewski,1120440-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/mateusz-gierszewski,1120440-1" target="_blank" rel="noopener">Profile &rarr;</a>
               </li>
               <li>
                 <span class="pc-name">Szymon Olewniczak</span>
                 <a class="pc-email" href="mailto:szymon.olewniczak@pg.edu.pl">szymon.olewniczak@pg.edu.pl</a>
-                <a class="pc-profile" href="https://mostwiedzy.pl/pl/szymon-olewniczak,902337-1" target="_blank" rel="noopener">Most Wiedzy &rarr;</a>
+                <a class="pc-profile" href="https://mostwiedzy.pl/pl/szymon-olewniczak,902337-1" target="_blank" rel="noopener">Profile &rarr;</a>
               </li>
               <li>
                 <span class="pc-name">Michal Kosciowski</span>
@@ -350,28 +351,33 @@
                 <a class="pc-profile" href="https://www.linkedin.com/in/michal-kosciowski-84b4bb27/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
               </li>
             </ul>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
-    <div class="wrap footer-inner">
-      <div>
-        <div class="footer-name">Trustworthy AI Lab</div>
-        <div class="footer-dept">Department of Computer Architecture &middot; Gdansk University of Technology</div>
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-name">Trustworthy AI Lab</div>
+          <div class="footer-dept">Department of Computer Architecture &middot; Gdansk University of Technology</div>
+        </div>
+        <a href="https://pg.edu.pl" target="_blank" rel="noopener" aria-label="Gdansk University of Technology">
+          <img class="footer-logo" src="https://pg.edu.pl/themes/custom/politechnika_gdanska/images/pg-logotyp-eng.svg" alt="Gdansk University of Technology" />
+        </a>
       </div>
-      <a href="https://pg.edu.pl" target="_blank" rel="noopener" aria-label="Gdansk University of Technology">
-        <img class="footer-logo" src="https://pg.edu.pl/themes/custom/politechnika_gdanska/images/pg-logotyp-eng.svg" alt="Gdansk University of Technology" />
-      </a>
-      <p class="footer-copy">&copy; <span id="yr"></span> Gdansk University of Technology</p>
+      <div class="footer-legal">
+        <span>&copy; <span id="yr"></span> Gdansk University of Technology</span>
+        <span class="footer-legal-sep">&middot;</span>
+        <a href="https://pg.edu.pl" target="_blank" rel="noopener">pg.edu.pl</a>
+      </div>
     </div>
   </footer>
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
