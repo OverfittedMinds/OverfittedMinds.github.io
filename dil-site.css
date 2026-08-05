@@ -169,6 +169,7 @@ h4 { margin-bottom: 8px; font-size: 17px; line-height: 1.3; }
 .person-links a { color: var(--blue); border-bottom: 1px solid currentColor; font: 600 11px/1.5 var(--sans); }
 .person-links a::after { margin-left: 5px; font-family: var(--mono); content: '↗'; }
 .person-links a[href^='mailto:']::after { content: '→'; }
+.person-bio { margin: 0 0 24px; color: var(--muted); font-size: 13px; line-height: 1.6; }
 .tags { display: flex; flex-wrap: wrap; gap: 7px; margin: auto 0 0; padding: 0; list-style: none; }
 .tags li { border: 1px solid var(--line-dark); padding: 4px 7px; color: var(--muted); font-size: 10px; }
 
