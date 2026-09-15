@@ -1,0 +1,8 @@
+services:
+  website:
+    image: registry.git.pg.edu.pl/p966564/overfittedminds-docker-image:latest
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      POLL_INTERVAL_SECONDS: "${POLL_INTERVAL_SECONDS:-300}"

@@ -1,0 +1,7 @@
+*
+!Dockerfile
+!nginx.conf
+!docker/
+!docker/site-lib.sh
+!docker/site-sync.sh
+!docker/site-start.sh
